@@ -1,5 +1,5 @@
 const path = require('path');
-const BUILD_DIR = path.resolve(__dirname, './public/build');
+const BUILD_DIR = path.resolve(__dirname, 'public/build');
 
 const APP_DIR = path.resolve(__dirname, './client');
 
@@ -15,7 +15,7 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: node_modules,
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
