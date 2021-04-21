@@ -5,6 +5,7 @@ const cookieController = {};
 // setCookie with a random number
 cookieController.setCookie = (req, res, next) => {
   res.cookie('secret', Math.floor(Math.random() * 100));
+  console.log('cookieController.setCookie Fired');
   return next();
 };
 
