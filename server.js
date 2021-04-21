@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
+// const bodyParser = require('body-parser');
 
 const userController = require('./controllers/userController');
 const cookieController = require('./controllers/cookieController');
@@ -19,6 +20,7 @@ const PORT = process.env.PORT || 4000;
 const app = express();
 // Bodyparser
 app.use(express.json());
+// app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(cookieParser());
 
@@ -46,11 +48,13 @@ app.get('/signup', cookieController.setCookie, (req, res) => {
 
 app.post(
   '/signup',
-  userController.createUser,
-  sessionController.startSession,
-  cookieController.setSSIDCookie,
+  // userController.createUser,
+  // sessionController.startSession,
+  // cookieController.setSSIDCookie,
   (req, res) => {
     console.log('SIGNUP POST FIRED');
+    console.log(req.body);
+    // res.end('Signed Up');
   }
 );
 
@@ -64,9 +68,9 @@ app.post(
   }
 );
 
-// app.use('*', (req, res) => {
-//   res.status(400).send('You done fucked up');
-// });
+app.use('*', (req, res) => {
+  res.status(400).send('You done fucked up');
+});
 
 app.use(express.static(__dirname + '/public'));
 

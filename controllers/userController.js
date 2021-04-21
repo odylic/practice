@@ -17,8 +17,8 @@ userController.getAllUsers = (req, res, next) => {
 
 userController.createUser = async (req, res, next) => {
   const {username, password} = req.body;
-  if (!username || !password)
-    return next('Missing username or password in userController.creatUser.');
+  // if (!username || !password)
+  //   return next('Missing username or password in userController.creatUser');
   try {
     // declare variable, await result of async req.body.username and req.body.password promise from mongodb and then createUser from UserSchema
     const newUser = await User.create({username, password});
